@@ -1,0 +1,53 @@
+{
+  "name": "typescript-graphql",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "license": "MIT",
+  "engines": {
+    "node": "14.x"
+  },
+  "scripts": {
+    "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
+    "postinstall": "npm run compile",
+    "compile": "tsc",
+    "start": "node ."
+  },
+  "dependencies": {
+    "@typegoose/typegoose": "^9.8.1",
+    "apollo-server-core": "^3.8.1",
+    "apollo-server-express": "^3.8.0",
+    "axios": "^0.27.2",
+    "bcrypt": "^5.0.1",
+    "class-validator": "^0.13.2",
+    "cloudinary": "^1.30.0",
+    "config": "^3.3.7",
+    "cookie-parser": "^1.4.6",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "express-jwt": "^7.7.2",
+    "graphql": "15.x",
+    "graphql-upload": "^13.0.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.3.4",
+    "nanoid": "^3.3.4",
+    "reflect-metadata": "^0.1.13",
+    "type-graphql": "^1.1.1"
+  },
+  "devDependencies": {
+    "@types/bcrypt": "^5.0.0",
+    "@types/config": "^0.0.41",
+    "@types/cookie-parser": "^1.4.3",
+    "@types/express": "^4.17.13",
+    "@types/express-jwt": "^6.0.4",
+    "@types/graphql-upload": "^8.0.11",
+    "@types/jsonwebtoken": "^8.5.8",
+    "@types/mongoose": "^5.11.97",
+    "@types/node": "^17.0.35",
+    "ts-node-dev": "^1.1.8",
+    "typescript": "^4.7.2"
+  },
+  "ts-node-dev-config": {
+    "ext": "ts",
+    "exec": "npm run postinstall && npm start"
+  }
+}
