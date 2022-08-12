@@ -1,4 +1,4 @@
-import HelloResolver from "./hello.resolver";
+import { HelloResolver } from "./hello.resolver";
 import { PostResolver } from "./post.resolver";
 import UserResolver from "./user.resolver";
 
