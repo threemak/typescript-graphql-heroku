@@ -63,10 +63,10 @@ async function startApolloServer() {
   });
 
   // connect to mongoDB
-  connectDB(process.env.DB_HOST, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  });
+  // connectDB(process.env.DB_HOST, {
+  //   useNewUrlParser: true,
+  //   useUnifiedTopology: true,
+  // });
 
   await apolloServer.start();
 
