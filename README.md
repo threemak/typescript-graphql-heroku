@@ -1,1 +1,1 @@
-## This is typescript graphql project
+## Typescript graphql project
