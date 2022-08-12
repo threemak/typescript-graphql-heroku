@@ -26,7 +26,6 @@ async function startApolloServer() {
     emitSchemaFile: true,
   });
 
-  const path = "/graphql";
   const app = express();
   app.use(express.json({ type: "application/json" }));
   app.use(express.urlencoded({ extended: true }));
@@ -40,6 +39,8 @@ async function startApolloServer() {
 
   const apolloServer = new ApolloServer({
     schema,
+    csrfPrevention: true,
+    cache: "bounded",
     context: async (ctx: Context) => {
       const context = ctx;
       if (context.req.headers.authorization) {
@@ -68,10 +69,13 @@ async function startApolloServer() {
 
   await apolloServer.start();
 
-  apolloServer.applyMiddleware({ app, path });
-  await new Promise<void>((resolve) => httpServer.listen(3000, resolve));
+  apolloServer.applyMiddleware({ app, path: "/" });
+  await new Promise<void>((resolve) =>
+    httpServer.listen({ port: 4000 }, resolve)
+  );
+
   console.log(
-    `🚀 Server ready at http://localhost:3000${apolloServer.graphqlPath}`
+    `🚀 Server ready at http://localhost:4000${apolloServer.graphqlPath}`
   );
 }
 startApolloServer();
