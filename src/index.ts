@@ -22,7 +22,7 @@ import { HelloResolver } from "./resolvers/hello.resolver";
 
 async function startApolloServer() {
   const schema = await buildSchema({
-    resolvers: [HelloResolver],
+    resolvers: resolvers,
     authChecker: authChecker,
     emitSchemaFile: true,
   });
