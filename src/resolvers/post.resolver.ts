@@ -14,7 +14,7 @@ import PostService from "../service/post.service";
 import Context from "../types/context";
 
 @Resolver()
-export class PostResolver {
+export default class PostResolver {
   constructor(private postService: PostService) {
     this.postService = new PostService();
   }
