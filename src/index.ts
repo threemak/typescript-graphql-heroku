@@ -42,15 +42,15 @@ async function startApolloServer() {
     schema,
     csrfPrevention: true,
     cache: "bounded",
-    // context: async (ctx: Context) => {
-    //   const context = ctx;
-    //   if (context.req.headers.authorization) {
-    //     const token = verifyJWT<User>(ctx.req.headers.authorization || "");
-    //     const user = await UserModel.findById<User>(token!.id).exec();
-    //     context.user = user;
-    //   }
-    //   return context;
-    // },
+    context: async (ctx: Context) => {
+      const context = ctx;
+      if (context.req.headers.authorization) {
+        const token = verifyJWT<User>(ctx.req.headers.authorization || "");
+        const user = await UserModel.findById<User>(token!.id).exec();
+        context.user = user;
+      }
+      return context;
+    },
     plugins: [
       ApolloServerPluginDrainHttpServer({ httpServer }),
       process.env.NODE_ENV === "production"
