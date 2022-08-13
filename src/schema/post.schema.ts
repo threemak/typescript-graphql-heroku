@@ -82,7 +82,7 @@ export class Post {
   published: boolean;
 
   @Field(() => User)
-  @prop({ ref: User, required: true })
+  @prop({ ref: "User", required: true })
   user: Ref<User>;
 
   @Field()
