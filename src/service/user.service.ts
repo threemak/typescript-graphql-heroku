@@ -1,11 +1,12 @@
 import { AuthenticationError } from "apollo-server-core";
+import bcrypt from "bcrypt";
 import {
   CreateUserInput,
   LoginUserInput,
   UserModel,
   UserObject,
 } from "../schema/user.schema";
-import bcrypt from "bcrypt";
+
 import Context from "../types/context";
 import { signJWT } from "../utils/jwt";
 
