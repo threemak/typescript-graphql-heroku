@@ -41,6 +41,7 @@ async function startApolloServer() {
   const apolloServer = new ApolloServer({
     apollo: {
       key: process.env.APOLLO_KEY,
+      graphRef: process.env.APOLLO_GRAPH_REF,
     },
     schema,
     csrfPrevention: true,
@@ -61,7 +62,6 @@ async function startApolloServer() {
         : ApolloServerPluginLandingPageLocalDefault({
             footer: false,
           }),
-      ApolloServerPluginSchemaReporting(),
     ],
     introspection: process.env.NODE_ENV === "production" ? false : true,
   });
