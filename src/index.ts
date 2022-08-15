@@ -4,6 +4,7 @@ import {
   ApolloServerPluginDrainHttpServer,
   ApolloServerPluginLandingPageLocalDefault,
   ApolloServerPluginLandingPageProductionDefault,
+  ApolloServerPluginSchemaReporting,
 } from "apollo-server-core";
 import { buildSchema } from "type-graphql";
 import { ApolloServer } from "apollo-server-express";
@@ -18,7 +19,6 @@ import { verifyJWT } from "./utils/jwt";
 import { User, UserModel } from "./schema/user.schema";
 import Context from "./types/context";
 import authChecker from "./types/authChecker";
-import { HelloResolver } from "./resolvers/hello.resolver";
 
 async function startApolloServer() {
   const schema = await buildSchema({
@@ -58,6 +58,7 @@ async function startApolloServer() {
         : ApolloServerPluginLandingPageLocalDefault({
             footer: false,
           }),
+      ApolloServerPluginSchemaReporting(),
     ],
     introspection: process.env.NODE_ENV === "production" ? false : true,
   });
@@ -74,7 +75,7 @@ async function startApolloServer() {
   await new Promise<void>((resolve) => httpServer.listen(PORT, resolve));
 
   console.log(
-    `🚀 Server ready at http://localhost:4000${apolloServer.graphqlPath}`
+    `🚀 Server ready at http://localhost:3000${apolloServer.graphqlPath}`
   );
 }
 startApolloServer();
