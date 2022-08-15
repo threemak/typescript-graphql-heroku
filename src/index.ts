@@ -39,6 +39,9 @@ async function startApolloServer() {
   const httpServer = http.createServer(app);
 
   const apolloServer = new ApolloServer({
+    apollo: {
+      key: process.env.APOLLO_KEY,
+    },
     schema,
     csrfPrevention: true,
     cache: "bounded",
